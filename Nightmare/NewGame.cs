@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 
 namespace Nightmare {
+    /// <summary>
+    /// Создание нового персонажа
+    /// </summary>
     public partial class NewGame : Form {
         private readonly Form1 form1;
 
@@ -10,6 +13,11 @@ namespace Nightmare {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Распределение очков способностей для создания уникального персонажа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
             var selectedText = comboBox1.SelectedItem.ToString();
             var player = new Player();
@@ -24,6 +32,11 @@ namespace Nightmare {
             stat7.Text = player.Stats[6].ToString();
         }
 
+        /// <summary>
+        /// Завершение создания персонажа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e) {
             var player = new Player();
             player.SetClass(comboBox1.SelectedItem.ToString());

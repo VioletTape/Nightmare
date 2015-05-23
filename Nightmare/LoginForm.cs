@@ -13,6 +13,12 @@ namespace Nightmare {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Загрузка данных о игроках и проверка пароля, чтобы можно было 
+        /// загрузить данные о нем. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e) {
             var con = new SqlCeConnection("DataSource=|DataDirectory|\\Database.sdf");
             var sqlCommand = new SqlCeCommand("select * from users", con);
@@ -45,6 +51,13 @@ namespace Nightmare {
             label3.Text = "Пароль или имя не верны";
         }
 
+        /// <summary>
+        /// Если всё верно, то пропустить пользователя:
+        ///  - закрыть окно логина
+        ///  - показать окно игры
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e) {
             if (!ok) {
                 e.Cancel = true;
