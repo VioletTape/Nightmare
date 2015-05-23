@@ -27,6 +27,10 @@
             return BaseAttack;
         }
 
+        /// <summary>
+        /// Значение специальной атаки
+        /// </summary>
+        /// <returns></returns>
         public override int SpecialAttack() {
             return 0;
         }

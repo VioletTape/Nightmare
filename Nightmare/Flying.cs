@@ -2,12 +2,17 @@
 using System.Linq;
 
 namespace Nightmare {
+    /// <summary>
+    /// Если вражина летает, то он должен наследоваться от этого класса
+    /// с базовыми значениями для атаки и защиты
+    /// </summary>
     public abstract class Flying : Enemy {
         protected Flying() {
             BaseAttack = 50;
             Defence = 200;
         }
     }
+
 
     public class Lion : Enemy {
          public Lion() {

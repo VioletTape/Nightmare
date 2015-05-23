@@ -9,13 +9,24 @@ namespace Nightmare {
 
         public Form1() {
             InitializeComponent();
+            // показывается форма логина для того, чтобы узнать пользователя и 
+            // загрузить его профиль, если всё сделано правильно
             var loginForm = new LoginForm(this);
             loginForm.Show();
             loginForm.Closed += (sender, args) => { label1.Text = "Welcome " + User.Login; };
         }
 
+        /// <summary>
+        /// Доступ к основной статистике игрока для отображения на форме
+        /// </summary>
         public Player MainStatistic { get; set; }
 
+
+        /// <summary>
+        /// Создание новой игры, ввод и распределение параметров персонажа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button14_Click(object sender, EventArgs e) {
             var newGame = new NewGame(this);
             newGame.Show();
@@ -39,12 +50,22 @@ namespace Nightmare {
             };
         }
 
+        /// <summary>
+        /// Бросок кубиков для нового хода персонажем
+        /// Отображение данных о броске
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button13_Click(object sender, EventArgs e) {
             var dices = game.Dices(character.Player);
             var printDices = character.GetDices(dices);
             label14.Text = printDices;
         }
 
+        /// <summary>
+        /// Получение нового уровня персонажем и распределение 
+        /// дополнительных очков для развития
+        /// </summary>
         public void NewLevel() {
             addStr.Visible = true;
             remStr.Visible = true;
@@ -69,6 +90,11 @@ namespace Nightmare {
             Level.Text = "Level " + character.Level;
         }
 
+        /// <summary>
+        /// Логика для добавления очков силы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addStr_Click(object sender, EventArgs e) {
             if (int.Parse(points.Text) > 0) {
                 var i = int.Parse(textBox1.Text);
@@ -77,6 +103,12 @@ namespace Nightmare {
             }
         }
 
+
+        /// <summary>
+        /// Удаление очков силы у персонажа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void remStr_Click(object sender, EventArgs e) {
             if (int.Parse(points.Text) < 5) {
                 var i = int.Parse(textBox1.Text);
@@ -85,6 +117,11 @@ namespace Nightmare {
             }
         }
 
+        /// <summary>
+        /// Добавление очков восприятия 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addPer_Click(object sender, EventArgs e) {
             if (int.Parse(points.Text) > 0) {
                 var i = int.Parse(textBox2.Text);
@@ -93,6 +130,11 @@ namespace Nightmare {
             }
         }
 
+        /// <summary>
+        /// удаление очков восприятия 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void remPer_Click(object sender, EventArgs e) {
             if (int.Parse(points.Text) < 5) {
                 var i = int.Parse(textBox2.Text);
@@ -101,6 +143,11 @@ namespace Nightmare {
             }
         }
 
+        /// <summary>
+        /// Добавление очков выносливости
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addEnd_Click(object sender, EventArgs e) {
             if (int.Parse(points.Text) > 0) {
                 var i = int.Parse(textBox3.Text);
@@ -109,6 +156,11 @@ namespace Nightmare {
             }
         }
 
+        /// <summary>
+        /// Удаление очков выносливости 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void remEnd_Click(object sender, EventArgs e) {
             if (int.Parse(points.Text) < 5) {
                 var i = int.Parse(textBox3.Text);
@@ -117,6 +169,9 @@ namespace Nightmare {
             }
         }
 
+        /// <summary>
+        /// Завершение редактирования набора параметров при получении нового уровня.
+        /// </summary>
         public void EndLevel()
         {
             addStr.Visible = false;
