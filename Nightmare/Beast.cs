@@ -23,7 +23,7 @@ namespace Nightmare {
         public int Level = 1;
         public int BaseAttack = 1;
         public int Defence = 0;
-        public int Name;
+        public string Name;
 
         public int Stunned;
 
@@ -84,6 +84,7 @@ namespace Nightmare {
             return Stunned > 0;
         }
     }
+
 
     /// <summary>
     /// Структура для расчета повреждений во время боя

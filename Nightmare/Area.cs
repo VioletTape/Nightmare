@@ -5,7 +5,7 @@
     /// (так же зависят от способностей героя) 
     /// Область может быть только одной специализации. 
     /// </summary>
-    public class Area {
+    public struct Area {
         public string Name;
         public AreaType AreaType;
         /// <summary>
