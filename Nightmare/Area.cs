@@ -1,4 +1,7 @@
-﻿namespace Nightmare {
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Nightmare {
     /// <summary>
     /// Класс содержит информацию об области где находится главный герой. 
     /// В зависимости от типа области накладываются штрафы или бонусы на героя 
@@ -38,6 +41,8 @@
         public int DiscoverXp;
 
         public bool Undiscovered;
+        private Character character;
+        public Game Game { get; set; }
 
         /// <summary>
         /// Обработка логики вхождения игрока в игровую зону
@@ -45,7 +50,21 @@
         /// <param name="character"></param>
         public void PlayerEnter(Character character) {
             Undiscovered = false;
+            this.character = character;
             // тут должна быть реализация
+        }
+
+        public void GenerateBeasts() {
+            
+        }
+
+        public void StartFight() {
+            var beasts = new List<Beast>();
+            Game.Fight(character, beasts.First());
+            while (beasts.First().Life > 0 || character.Player.Life > 0) {
+                Game.Turn(character, beasts.First(), Game.Dices(character.Player), Game.AiDice(beasts.First()));
+            }
+
         }
     }
 }

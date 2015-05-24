@@ -156,7 +156,8 @@ namespace Nightmare {
                 IsSecretArea = IsSecretArea,
                 IsQuestArea = IsQuestArea,
                 IsTravelArea = IsTravelArea,
-                Undiscovered = true
+                Undiscovered = true,
+                Game = this
             };
         }
     }
