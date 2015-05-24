@@ -67,6 +67,9 @@ namespace Nightmare {
 
         /// <summary>
         /// Рассчет одного хода битвы 
+        /// В зависимости от того, у кого круче уровень, будет по разному рассчитаны коэффициенты атаки и защиты,
+        /// соответственно и урона. 
+        /// Далее сравниваются атака и защита борющихся и в зависимости от этого опять же меняются коэффициенты. 
         /// </summary>
         /// <param name="character"></param>
         /// <param name="beast"></param>
@@ -95,10 +98,10 @@ namespace Nightmare {
                                 beast.Life -= charAttack[i].Power - (int) (beastAttack[i].Defence*0.5m);
                             }
                             else {
-                                if (charDices.Count(j => j == 5) < 0) {
+                                if (charDices.Count(j => j == 5) <= 0) {
                                     character.Player.Life -= charAttack[i].Power - (int) (beastAttack[i].Defence*0.8m);
                                 }
-                                if (charDices.Count(j => j == 5) < 1) {
+                                if (charDices.Count(j => j == 5) < 2) {
                                     beast.Life -= charAttack[i].Power - (int) (beastAttack[i].Defence*0.4m);
                                 }
                             }

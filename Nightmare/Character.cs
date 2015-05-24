@@ -2,6 +2,11 @@
 using System.Linq;
 
 namespace Nightmare {
+    /// <summary>
+    /// Описание персонажа и все связанные с ним действия: 
+    /// броски кубиков, рассчет атаки и так далее.
+    /// Работа с инвентарем.
+    /// </summary>
     public class Character {
         public List<Item> Bag = new List<Item>();
         public Player Player { get; set; }
@@ -13,10 +18,19 @@ namespace Nightmare {
             Level = 1;
         }
 
+        /// <summary>
+        /// Вывод значения кубиков, брошеных игроком
+        /// </summary>
+        /// <param name="dices"></param>
+        /// <returns></returns>
         public string GetDices(List<int> dices) {
             return string.Join(":", dices);
         }
 
+        /// <summary>
+        /// Рассчет атак (сила и защита) на основе одетой одежды, оружия\щитов
+        /// </summary>
+        /// <returns></returns>
         public List<Attack> GetAttacks() {
             var weapons = new List<Weapon>();
             var shields = new List<Shield>();
@@ -56,6 +70,11 @@ namespace Nightmare {
             return new List<Attack> {attack};
         }
 
+        /// <summary>
+        /// Определение можно ли использовать оружие персонажу
+        /// если можно, то использует
+        /// </summary>
+        /// <param name="weapon"></param>
         public void Equip(Weapon weapon) {
             var result = weapon.CanWearFor(Player);
             if (result) {
@@ -63,14 +82,27 @@ namespace Nightmare {
             }
         }
 
+        /// <summary>
+        /// Пополнение жизни персонажу
+        /// </summary>
+        /// <param name="character"></param>
         public void FillLife(Character character) {
             character.Player.Life = character.Player.MaxLife;
         }
 
+        /// <summary>
+        /// Пополнение выносливости персонажу
+        /// </summary>
+        /// <param name="character"></param>
         public void FillStamina(Character character) {
             character.Player.Stamina = character.Player.MaxStamina;
         }
 
+        /// <summary>
+        /// Определение можно ли использовать одежу персонажу
+        /// если можно, то использует
+        /// </summary>
+        /// <param name="wear"></param>
         public void Equip(Wear wear) {
             var result = wear.CanWearFor(Player);
             if (result) {
@@ -78,6 +110,11 @@ namespace Nightmare {
             }
         }
 
+        /// <summary>
+        /// Определение можно ли использовать щит персонажу
+        /// если можно, то использует
+        /// </summary>
+        /// <param name="shield"></param>
         public void Equip(Shield shield) {
             var result = shield.CanWearFor(Player);
             if (result) {

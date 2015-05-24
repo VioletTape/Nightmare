@@ -24,8 +24,12 @@
         /// </summary>
         public int DiscoverXp;
 
+        /// <summary>
+        /// Обработка логики вхождения игрока в игровую зону
+        /// </summary>
+        /// <param name="character"></param>
         public void PlayerEnter(Character character) {
-            
+            // тут должна быть реализация
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 
 namespace Nightmare {
+    /// <summary>
+    /// Класс для создания оружия с поправкой на уровень персонажа
+    /// </summary>
     public class WeaponGenerator {
         public Weapon Generate(Character character) {
             var random = new Random();
@@ -23,6 +26,8 @@ namespace Nightmare {
                 case 4:
                     weapon.Bow = true;
                     break;
+                default:
+                    throw new ArgumentException("Unreachable code");
             }
 
             value = (int)(random.Next(10)*character.Level);

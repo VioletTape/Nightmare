@@ -1,4 +1,7 @@
 ﻿namespace Nightmare {
+    /// <summary>
+    /// Класс противника 
+    /// </summary>
     public class Wolf : Enemy {
         public Wolf() {
             BaseAttack = 15;
