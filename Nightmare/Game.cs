@@ -142,7 +142,7 @@ namespace Nightmare {
         /// <param name="IsSecretArea"></param>
         /// <param name="discoverXp"></param>
         /// <returns></returns>
-        public Area CreateArea(string name, AreaType areaType, bool IsFightArea, bool IsMerchArea, bool IsSecretArea, int discoverXp) {
+        public Area CreateArea(string name, AreaType areaType, bool IsFightArea, bool IsMerchArea, bool IsSecretArea, bool IsTravelArea, bool IsQuestArea, int discoverXp) {
             if (name == "" || name == null) {
                 throw new ArgumentException("Name should be filled");
             }
@@ -153,7 +153,10 @@ namespace Nightmare {
                 DiscoverXp = discoverXp,
                 IsFightArea = IsFightArea,
                 IsMerchArea = IsMerchArea,
-                IsSecretArea = IsSecretArea
+                IsSecretArea = IsSecretArea,
+                IsQuestArea = IsQuestArea,
+                IsTravelArea = IsTravelArea,
+                Undiscovered = true
             };
         }
     }
